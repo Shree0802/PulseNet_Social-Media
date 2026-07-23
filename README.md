@@ -2,7 +2,7 @@
 
 PulseNet is a full-stack, production-grade social media platform built with Node.js, Express, MongoDB (Mongoose), JWT Authentication, Multer file uploads, and a modern Vanilla HTML5/CSS3/JavaScript frontend featuring glassmorphism, dark/light theme switching, and real-time interactive social features.
 
-# Web Application:https://pulse-net-social-media-qkpug3474-axvercel.vercel.app/
+# Web Application:https://pulse-net-social-media.vercel.app/
 # Download Apk:https://github.com/Shree0802/PulseNet_Social-Media/releases/download/v1.0.0/app-apk-b36032f7d6714f469c9ee9cee2f9da1e-1784812812.apk
 ---
 
