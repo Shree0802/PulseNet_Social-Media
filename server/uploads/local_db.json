@@ -1,0 +1,159 @@
+{
+  "users": [
+    {
+      "_id": "x2hroyq7mrxgzznw",
+      "username": "john_doe",
+      "email": "john@example.com",
+      "password": "$2a$10$YQb2LsqxmZLrecLc9B6jwuRGOcxvCStecA0RLhXev7PCzWo1X8y9i",
+      "bio": "",
+      "profilePicture": "/uploads/default-avatar.svg",
+      "followers": [
+        "ewcj3c3kmrxh4ec4"
+      ],
+      "following": [],
+      "createdAt": "2026-07-23T12:11:10.028Z",
+      "updatedAt": "2026-07-23T12:11:10.029Z"
+    },
+    {
+      "_id": "zqedkso1mrxh1ta9",
+      "username": "Prathamesh1718",
+      "email": "prathamesh0802@gmail.com",
+      "password": "$2a$10$Y6hj3P547Th2dvlTQX/Hh./BP1PvJandU0CK7J5tEtcTpQ5SyH.U6",
+      "bio": "",
+      "profilePicture": "/uploads/default-avatar.svg",
+      "followers": [
+        "ewcj3c3kmrxh4ec4"
+      ],
+      "following": [],
+      "createdAt": "2026-07-23T12:12:35.073Z",
+      "updatedAt": "2026-07-23T12:12:35.073Z"
+    },
+    {
+      "_id": "ewcj3c3kmrxh4ec4",
+      "username": "Prathamesh1745",
+      "email": "shreepatil0802@gmail.com",
+      "password": "$2a$10$yTB3cxkVKuHK87TlCZWJA.VhGbRU/XWhhfJ8HSdm7sbOBYLgyWAIK",
+      "bio": "",
+      "profilePicture": "/uploads/profilePicture-1784810140036-909700087.jpeg",
+      "followers": [],
+      "following": [
+        "x2hroyq7mrxgzznw",
+        "zqedkso1mrxh1ta9",
+        "6a620625cd6284704f7f07d4"
+      ],
+      "createdAt": "2026-07-23T12:14:35.668Z",
+      "updatedAt": "2026-07-23T12:35:40.083Z"
+    },
+    {
+      "_id": "6a620625cd6284704f7f07d4",
+      "username": "freshuser",
+      "email": "freshuser@example.com",
+      "password": "$2a$10$Dq2T4WH5bTsEbbMz0vrj3ewnc2NB4t19VHSgAd/QNrOkG2G26acVq",
+      "bio": "",
+      "profilePicture": "/uploads/default-avatar.svg",
+      "followers": [
+        "ewcj3c3kmrxh4ec4"
+      ],
+      "following": [],
+      "createdAt": "2026-07-23T12:16:37.214Z",
+      "updatedAt": "2026-07-23T12:16:37.214Z"
+    },
+    {
+      "_id": "6a6207d644c9d33cb4fd52aa",
+      "username": "alice",
+      "email": "alice@example.com",
+      "password": "$2a$10$gXXTpeTQyoiOzp5STCEvhOLHN.8TutiPTemJ6qUQocdWWsixsme2i",
+      "bio": "",
+      "profilePicture": "/uploads/default-avatar.svg",
+      "followers": [],
+      "following": [],
+      "createdAt": "2026-07-23T12:23:50.317Z",
+      "updatedAt": "2026-07-23T12:23:50.318Z"
+    },
+    {
+      "_id": "6a6207d644c9d33cb4fd52ab",
+      "username": "bob",
+      "email": "bob@example.com",
+      "password": "$2a$10$YOx0jaNl3STjECBXuze1QuNBm2M/6q7KJ6j/e.bLz2JtjiSiPmIai",
+      "bio": "",
+      "profilePicture": "/uploads/default-avatar.svg",
+      "followers": [],
+      "following": [],
+      "createdAt": "2026-07-23T12:23:50.450Z",
+      "updatedAt": "2026-07-23T12:23:50.450Z"
+    }
+  ],
+  "posts": [
+    {
+      "_id": "6a620625cd6284704f7f07d5",
+      "userId": "6a620625cd6284704f7f07d4",
+      "caption": "Hello world! Loving PulseNet!",
+      "image": "",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2026-07-23T12:16:37.356Z",
+      "updatedAt": "2026-07-23T12:16:37.356Z"
+    },
+    {
+      "_id": "6a620691cd6284704f7f07d6",
+      "userId": "ewcj3c3kmrxh4ec4",
+      "caption": "Hello !  Welcome to the Pulsenet",
+      "image": "",
+      "likes": [],
+      "comments": [
+        "6a62069bcd6284704f7f07d7"
+      ],
+      "createdAt": "2026-07-23T12:18:25.325Z",
+      "updatedAt": "2026-07-23T12:18:25.325Z"
+    },
+    {
+      "_id": "6a620a6cb389fc118f34cb0a",
+      "userId": "ewcj3c3kmrxh4ec4",
+      "caption": "",
+      "image": "/uploads/image-1784810092628-695031985.jpeg",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2026-07-23T12:34:52.651Z",
+      "updatedAt": "2026-07-23T12:34:52.651Z"
+    }
+  ],
+  "comments": [
+    {
+      "_id": "6a62069bcd6284704f7f07d7",
+      "userId": "ewcj3c3kmrxh4ec4",
+      "postId": "6a620691cd6284704f7f07d6",
+      "text": "helo!",
+      "createdAt": "2026-07-23T12:18:35.378Z"
+    }
+  ],
+  "messages": [
+    {
+      "_id": "6a6207d644c9d33cb4fd52ac",
+      "senderId": "6a6207d644c9d33cb4fd52aa",
+      "receiverId": "6a6207d644c9d33cb4fd52ab",
+      "text": "Hey Bob! Welcome to PulseNet Chat!",
+      "createdAt": "2026-07-23T12:23:50.464Z"
+    },
+    {
+      "_id": "6a6207d644c9d33cb4fd52ad",
+      "senderId": "6a6207d644c9d33cb4fd52ab",
+      "receiverId": "6a6207d644c9d33cb4fd52aa",
+      "text": "Hey Alice! Wow, this Instagram-style DM feature is awesome!",
+      "createdAt": "2026-07-23T12:23:50.472Z"
+    },
+    {
+      "_id": "6a6208cc73714dedd3228e77",
+      "senderId": "ewcj3c3kmrxh4ec4",
+      "receiverId": "x2hroyq7mrxgzznw",
+      "text": "hello",
+      "createdAt": "2026-07-23T12:27:56.240Z"
+    },
+    {
+      "_id": "6a620a04b389fc118f34cb09",
+      "senderId": "x2hroyq7mrxgzznw",
+      "receiverId": "ewcj3c3kmrxh4ec4",
+      "text": "hii how are u",
+      "createdAt": "2026-07-23T12:33:08.042Z"
+    }
+  ]
+}

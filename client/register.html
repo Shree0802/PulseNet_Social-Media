@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - PulseNet</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <!-- Header / Theme Toggle -->
+  <header style="position: absolute; top: 20px; right: 20px;">
+    <button class="icon-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+      🌓
+    </button>
+  </header>
+
+  <div style="display: flex; min-height: 100vh; align-items: center; justify-content: center; padding: 1.5rem;">
+    <div class="glass-card" style="padding: 2.5rem; width: 100%; max-width: 440px; animation: fadeIn 0.4s ease;">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div class="nav-brand" style="font-size: 2.2rem; justify-content: center; margin-bottom: 0.5rem;">
+          ⚡ PulseNet
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Join our community today</p>
+      </div>
+
+      <form id="register-form">
+        <div style="margin-bottom: 1.2rem;">
+          <label style="display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 6px;">Username</label>
+          <input type="text" id="reg-username" class="form-control" placeholder="Choose a unique username" minlength="3" required>
+        </div>
+
+        <div style="margin-bottom: 1.2rem;">
+          <label style="display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 6px;">Email Address</label>
+          <input type="email" id="reg-email" class="form-control" placeholder="name@example.com" required>
+        </div>
+
+        <div style="margin-bottom: 1.8rem;">
+          <label style="display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 6px;">Password</label>
+          <input type="password" id="reg-password" class="form-control" placeholder="At least 6 characters" minlength="6" required>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; margin-bottom: 1.2rem;">
+          Create Account
+        </button>
+      </form>
+
+      <div style="text-align: center; font-size: 0.9rem; color: var(--text-muted);">
+        Already have an account? <a href="/login.html" style="color: var(--accent-color); font-weight: 600;">Log in</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/theme.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    Auth.redirectIfAuth();
+
+    document.getElementById('register-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('reg-username').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const password = document.getElementById('reg-password').value;
+
+      try {
+        const res = await API.post('/auth/register', { username, email, password });
+        Auth.setSession(res.token, res.user);
+        showToast('Account created successfully! Welcome!', 'success');
+        setTimeout(() => {
+          window.location.href = '/feed.html';
+        }, 600);
+      } catch (err) {
+        showToast(err.message || 'Registration failed.', 'error');
+      }
+    });
+  </script>
+</body>
+</html>

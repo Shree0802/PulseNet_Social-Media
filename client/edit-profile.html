@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile - PulseNet</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="/feed.html" class="nav-brand">
+      ⚡ <span>PulseNet</span>
+    </a>
+    <div class="nav-actions">
+      <a href="/profile.html" class="icon-btn" title="Back to Profile">🔙</a>
+    </div>
+  </nav>
+
+  <main class="app-layout single-column">
+    <div class="glass-card" style="padding: 2.5rem; animation: fadeIn 0.4s ease;">
+      <h2 style="margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: 700;">Edit Profile</h2>
+
+      <form id="edit-profile-form">
+        <!-- Avatar Preview & Upload -->
+        <div style="text-align: center; margin-bottom: 2rem;">
+          <img src="/uploads/default-avatar.svg" id="avatar-preview" style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-color); margin-bottom: 1rem;">
+          <div>
+            <label for="profile-pic-input" class="btn-secondary" style="cursor: pointer;">
+              📷 Change Photo
+              <input type="file" id="profile-pic-input" accept="image/*" style="display: none;">
+            </label>
+          </div>
+        </div>
+
+        <div style="margin-bottom: 1.5rem;">
+          <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px;">Username</label>
+          <input type="text" id="edit-username" class="form-control" required minlength="3">
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+          <label style="display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px;">Bio</label>
+          <textarea id="edit-bio" class="form-control" rows="4" placeholder="Tell the world a bit about yourself..."></textarea>
+        </div>
+
+        <div style="display: flex; gap: 1rem; justify-content: flex-end;">
+          <a href="/profile.html" class="btn-secondary">Cancel</a>
+          <button type="submit" class="btn-primary">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="/js/theme.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    Auth.requireAuth();
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await Auth.syncCurrentUser();
+      const user = Auth.getUser();
+
+      if (user) {
+        document.getElementById('avatar-preview').src = user.profilePicture || '/uploads/default-avatar.svg';
+        document.getElementById('edit-username').value = user.username || '';
+        document.getElementById('edit-bio').value = user.bio || '';
+      }
+
+      // Preview Image on File Pick
+      const picInput = document.getElementById('profile-pic-input');
+      picInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            document.getElementById('avatar-preview').src = event.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // Submit Edit Form
+      document.getElementById('edit-profile-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const username = document.getElementById('edit-username').value.trim();
+        const bio = document.getElementById('edit-bio').value.trim();
+        const file = picInput.files[0];
+
+        const formData = new FormData();
+        formData.append('username', username);
+        formData.append('bio', bio);
+        if (file) {
+          formData.append('profilePicture', file);
+        }
+
+        try {
+          const res = await API.putFormData('/users/update', formData);
+          Auth.setUser(res.user);
+          showToast('Profile updated successfully!', 'success');
+          setTimeout(() => {
+            window.location.href = '/profile.html';
+          }, 600);
+        } catch (err) {
+          showToast(err.message || 'Failed to update profile', 'error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

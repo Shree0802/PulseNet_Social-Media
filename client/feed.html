@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feed - PulseNet</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="/feed.html" class="nav-brand">
+      ⚡ <span>PulseNet</span>
+    </a>
+
+    <div class="nav-search">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="nav-search-input" class="form-control" placeholder="Search posts or users...">
+    </div>
+
+    <div class="nav-actions">
+      <a href="/messages" class="icon-btn" title="Direct Messages">💬</a>
+      <button class="icon-btn" onclick="toggleTheme()" title="Toggle Theme">
+        🌓
+      </button>
+      <a href="/profile.html" title="View Profile">
+        <img src="/uploads/default-avatar.svg" id="nav-user-avatar" class="user-avatar-btn" alt="Profile">
+      </a>
+      <button class="icon-btn" id="logout-btn" title="Logout">
+        🚪
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Application 3-Column Grid -->
+  <main class="app-layout">
+    <!-- Left Column: User Quick Profile Sidebar -->
+    <aside>
+      <div class="glass-card sidebar-profile-card">
+        <img src="/uploads/default-avatar.svg" id="sidebar-user-avatar" class="sidebar-avatar" alt="Avatar">
+        <div class="sidebar-name" id="sidebar-user-name">Loading...</div>
+        <div class="sidebar-username" id="sidebar-user-username">@user</div>
+
+        <div class="sidebar-stats">
+          <div class="stat-item">
+            <span class="stat-value" id="sidebar-followers-count">0</span>
+            <span class="stat-label">Followers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value" id="sidebar-following-count">0</span>
+            <span class="stat-label">Following</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 1.2rem;">
+          <a href="/profile.html" class="btn-secondary" style="width: 100%; justify-content: center;">
+            View Full Profile
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Center Column: Post Creation & Feed Stream -->
+    <section>
+      <!-- Post Creation Card -->
+      <div class="glass-card create-post-card">
+        <form id="create-post-form">
+          <div class="create-post-header">
+            <img src="/uploads/default-avatar.svg" id="create-post-avatar" class="create-post-avatar" alt="Avatar">
+            <textarea id="post-caption-input" class="create-post-input" placeholder="What's happening? Share a thought or image..."></textarea>
+          </div>
+
+          <!-- Image Upload Live Preview Container -->
+          <div class="image-preview-container" id="image-preview-container">
+            <img id="image-preview" src="" alt="Selected Preview">
+            <button type="button" class="remove-img-btn" id="remove-img-btn" title="Remove Image">✕</button>
+          </div>
+
+          <div class="create-post-actions">
+            <label for="post-image-input" class="upload-label">
+              <span>🖼️ Add Image</span>
+              <input type="file" id="post-image-input" accept="image/*" style="display: none;">
+            </label>
+            <button type="submit" class="btn-primary">
+              Post
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Posts Feed Stream -->
+      <div id="feed-posts-container">
+        <!-- Dynamic Feed Posts inserted via feed.js -->
+      </div>
+    </section>
+
+    <!-- Right Column: Suggested Users -->
+    <aside>
+      <div class="glass-card suggested-users-card">
+        <div class="sidebar-title">
+          <span>Suggested People</span>
+        </div>
+        <div id="suggested-users-container">
+          <!-- Dynamic suggestions inserted via feed.js -->
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="/js/theme.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/feed.js"></script>
+</body>
+</html>

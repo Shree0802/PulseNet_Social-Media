@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - PulseNet</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <!-- Header / Theme Toggle -->
+  <header style="position: absolute; top: 20px; right: 20px;">
+    <button class="icon-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+      🌓
+    </button>
+  </header>
+
+  <div style="display: flex; min-height: 100vh; align-items: center; justify-content: center; padding: 1.5rem;">
+    <div class="glass-card" style="padding: 2.5rem; width: 100%; max-width: 420px; animation: fadeIn 0.4s ease;">
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <div class="nav-brand" style="font-size: 2.2rem; justify-content: center; margin-bottom: 0.5rem;">
+          ⚡ PulseNet
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Welcome back! Log in to your account</p>
+      </div>
+
+      <form id="login-form">
+        <div style="margin-bottom: 1.2rem;">
+          <label style="display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 6px;">Email or Username</label>
+          <input type="text" id="login-id" class="form-control" placeholder="Enter your email or username" required>
+        </div>
+
+        <div style="margin-bottom: 1.8rem;">
+          <label style="display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 6px;">Password</label>
+          <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; margin-bottom: 1.2rem;">
+          Log In
+        </button>
+      </form>
+
+      <div style="text-align: center; font-size: 0.9rem; color: var(--text-muted);">
+        Don't have an account? <a href="/register.html" style="color: var(--accent-color); font-weight: 600;">Sign up</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/theme.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    Auth.redirectIfAuth();
+
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const loginId = document.getElementById('login-id').value.trim();
+      const password = document.getElementById('login-password').value;
+
+      try {
+        const res = await API.post('/auth/login', { loginId, password });
+        Auth.setSession(res.token, res.user);
+        showToast('Login successful! Redirecting...', 'success');
+        setTimeout(() => {
+          window.location.href = '/feed.html';
+        }, 600);
+      } catch (err) {
+        showToast(err.message || 'Login failed. Please check your credentials.', 'error');
+      }
+    });
+  </script>
+</body>
+</html>

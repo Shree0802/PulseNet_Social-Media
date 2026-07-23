@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PulseNet - Modern Social Platform</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <div style="display: flex; height: 100vh; align-items: center; justify-content: center; text-align: center; padding: 2rem;">
+    <div class="glass-card" style="padding: 3rem; max-width: 480px; width: 100%;">
+      <div class="nav-brand" style="font-size: 2.5rem; justify-content: center; margin-bottom: 1rem;">
+        ⚡ PulseNet
+      </div>
+      <p style="color: var(--text-muted); margin-bottom: 2rem;">Connecting ideas, people, and moments in real time.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <a href="/login.html" class="btn-primary" style="flex: 1;">Login</a>
+        <a href="/register.html" class="btn-secondary" style="flex: 1;">Register</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/theme.js"></script>
+  <script src="/js/auth.js"></script>
+  <script>
+    // Auto redirect if token exists
+    if (Auth.getToken()) {
+      window.location.href = '/feed.html';
+    }
+  </script>
+</body>
+</html>

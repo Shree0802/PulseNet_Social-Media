@@ -1,0 +1,81 @@
+/* ==========================================================================
+   MINI SOCIAL MEDIA PLATFORM - RESPONSIVE STYLES
+   Breakpoints: Desktop (>1024px), Tablet (768px - 1024px), Mobile (<768px)
+   ========================================================================== */
+
+/* --- Tablet Breakpoint --- */
+@media (max-width: 1024px) {
+  .app-layout {
+    grid-template-columns: 240px 1fr;
+    max-width: 900px;
+    gap: 1.5rem;
+  }
+
+  .suggested-users-card {
+    display: none; /* Hide right sidebar on tablet */
+  }
+
+  .nav-search {
+    width: 240px;
+  }
+}
+
+/* --- Mobile Breakpoint --- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 1rem;
+    height: 60px;
+  }
+
+  .nav-search {
+    display: none; /* Mobile search uses expandable input or dedicated screen */
+  }
+
+  .nav-brand span {
+    display: none; /* Icon only logo on mobile header */
+  }
+
+  .app-layout {
+    grid-template-columns: 1fr;
+    margin: 1rem auto;
+    padding: 0 1rem;
+  }
+
+  .sidebar-profile-card {
+    display: none; /* Hide left profile summary card on mobile feeds */
+  }
+
+  .create-post-card, .post-card {
+    padding: 1rem;
+    border-radius: var(--radius-md);
+  }
+
+  .post-media img {
+    max-height: 380px;
+  }
+
+  .modal-box {
+    width: 95%;
+    padding: 1.2rem;
+  }
+
+  #toast-container {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+  }
+
+  .toast {
+    min-width: 100%;
+  }
+
+  /* Profile page stats layout mobile */
+  .profile-header-grid {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-stats-row {
+    gap: 1rem !important;
+  }
+}

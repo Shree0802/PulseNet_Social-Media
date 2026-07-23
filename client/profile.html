@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - PulseNet</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+  <style>
+    .profile-header-card {
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .profile-header-grid {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .profile-large-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent-color);
+      box-shadow: var(--shadow-glow);
+    }
+    .profile-stats-row {
+      display: flex;
+      gap: 2.5rem;
+      margin: 1.2rem 0;
+    }
+    .profile-stat-btn {
+      cursor: pointer;
+      text-align: center;
+    }
+    .profile-stat-btn:hover .stat-value {
+      color: var(--accent-color);
+    }
+    .user-posts-grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+    .grid-post-item {
+      aspect-ratio: 1 / 1;
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      display: block;
+    }
+    .grid-post-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-normal);
+    }
+    .grid-post-item:hover img {
+      transform: scale(1.06);
+    }
+    .grid-post-text-only {
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .grid-post-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      opacity: 0;
+      transition: opacity var(--transition-fast);
+      color: #fff;
+      font-weight: 700;
+    }
+    .grid-post-item:hover .grid-post-overlay {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="/feed.html" class="nav-brand">
+      ⚡ <span>PulseNet</span>
+    </a>
+
+    <div class="nav-actions">
+      <a href="/feed.html" class="icon-btn" title="Home Feed">🏠</a>
+      <button class="icon-btn" onclick="toggleTheme()" title="Toggle Theme">🌓</button>
+      <button class="icon-btn" id="logout-btn" title="Logout">🚪</button>
+    </div>
+  </nav>
+
+  <main class="app-layout single-column">
+    <!-- User Profile Header Card -->
+    <div class="glass-card profile-header-card">
+      <div class="profile-header-grid">
+        <img src="/uploads/default-avatar.svg" id="profile-avatar" class="profile-large-avatar" alt="Avatar">
+        <div style="flex-grow: 1;">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
+            <div>
+              <h2 id="profile-username" style="font-size: 1.8rem; font-weight: 700;">Loading...</h2>
+              <div id="profile-email" style="color: var(--text-muted); font-size: 0.9rem;">email@example.com</div>
+            </div>
+            <div id="profile-action-btn-container">
+              <!-- Dynamically inserted Edit Profile or Follow Button -->
+            </div>
+          </div>
+
+          <p id="profile-bio" style="margin-top: 1rem; color: var(--text-light); font-size: 0.98rem; max-width: 500px;">
+            Bio loading...
+          </p>
+
+          <div class="profile-stats-row">
+            <div class="profile-stat-btn">
+              <div class="stat-value" id="profile-posts-count">0</div>
+              <div class="stat-label">Posts</div>
+            </div>
+            <div class="profile-stat-btn" id="followers-stat-trigger">
+              <div class="stat-value" id="profile-followers-count">0</div>
+              <div class="stat-label">Followers</div>
+            </div>
+            <div class="profile-stat-btn" id="following-stat-trigger">
+              <div class="stat-value" id="profile-following-count">0</div>
+              <div class="stat-label">Following</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Posts Grid Section -->
+    <h3 style="margin-bottom: 1rem; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
+      📷 <span>Posts</span>
+    </h3>
+    <div class="user-posts-grid-container" id="user-posts-grid">
+      <!-- Dynamic posts grid -->
+    </div>
+  </main>
+
+  <!-- Followers / Following List Modal Popup -->
+  <div class="modal-backdrop" id="list-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title" id="list-modal-title">Users</div>
+        <button class="modal-close" id="list-modal-close">✕</button>
+      </div>
+      <div id="list-modal-content">
+        <!-- List inserted via profile.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/theme.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>

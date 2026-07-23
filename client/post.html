@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post View - PulseNet</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/responsive.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <a href="/feed.html" class="nav-brand">
+      ⚡ <span>PulseNet</span>
+    </a>
+    <div class="nav-actions">
+      <a href="/feed.html" class="icon-btn" title="Back to Feed">🏠</a>
+      <button class="icon-btn" onclick="toggleTheme()" title="Toggle Theme">🌓</button>
+      <button class="icon-btn" id="logout-btn" title="Logout">🚪</button>
+    </div>
+  </nav>
+
+  <main class="app-layout single-column">
+    <!-- Single Post Detail -->
+    <div id="single-post-container">
+      <!-- Post rendered via post.js -->
+    </div>
+
+    <!-- Full Comments Thread Section -->
+    <div class="glass-card" style="padding: 1.8rem; margin-top: 1.5rem;">
+      <h3 style="margin-bottom: 1.2rem; font-size: 1.15rem;">Comments</h3>
+
+      <!-- Add Comment Form -->
+      <form id="single-comment-form" style="margin-bottom: 1.8rem;">
+        <div style="display: flex; gap: 10px;">
+          <input type="text" id="single-comment-input" class="form-control" placeholder="Write a comment..." required>
+          <button type="submit" class="btn-primary">Post</button>
+        </div>
+      </form>
+
+      <!-- Comments Stream -->
+      <div id="full-comments-list">
+        <!-- Rendered via post.js -->
+      </div>
+    </div>
+  </main>
+
+  <script src="/js/theme.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/post.js"></script>
+</body>
+</html>
