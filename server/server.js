@@ -83,9 +83,13 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`=================================================`);
-  console.log(`🚀 Server running in production mode on port ${PORT}`);
-  console.log(`🌐 Web App available at: http://localhost:${PORT}`);
-  console.log(`=================================================`);
-});
+if (process.env.NODE_ENV !== 'test' && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`=================================================`);
+    console.log(`🚀 Server running in production mode on port ${PORT}`);
+    console.log(`🌐 Web App available at: http://localhost:${PORT}`);
+    console.log(`=================================================`);
+  });
+}
+
+module.exports = app;

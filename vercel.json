@@ -1,0 +1,67 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "client/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "server/server.js"
+    },
+    {
+      "src": "/uploads/(.*)",
+      "dest": "server/server.js"
+    },
+    {
+      "src": "/css/(.*)",
+      "dest": "client/css/$1"
+    },
+    {
+      "src": "/js/(.*)",
+      "dest": "client/js/$1"
+    },
+    {
+      "src": "/login",
+      "dest": "client/login.html"
+    },
+    {
+      "src": "/register",
+      "dest": "client/register.html"
+    },
+    {
+      "src": "/feed",
+      "dest": "client/feed.html"
+    },
+    {
+      "src": "/profile",
+      "dest": "client/profile.html"
+    },
+    {
+      "src": "/edit-profile",
+      "dest": "client/edit-profile.html"
+    },
+    {
+      "src": "/post",
+      "dest": "client/post.html"
+    },
+    {
+      "src": "/messages",
+      "dest": "client/messages.html"
+    },
+    {
+      "src": "/",
+      "dest": "client/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "client/$1"
+    }
+  ]
+}
